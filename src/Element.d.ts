@@ -17,15 +17,6 @@ export as namespace by;
 export function elementIsMatchSelector(element:Element,selector:string,parentNode?:Element):boolean;
 
 
-
-
-type EleMatchOpts = {
-    tag?:string, 
-    id?:string,
-    class?:string | string[],
-    selector?:string
-};
-  
   
   
   /**
@@ -82,6 +73,17 @@ type EleMatchOpts = {
 
 
 declare global {
+
+    
+
+
+type EleMatchOpts = {
+    tag?:string, 
+    id?:string,
+    class?:string | string[],
+    selector?:string
+};
+  
 
     interface Element {
 
