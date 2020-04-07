@@ -1,3 +1,5 @@
+import "js-expand"
+
 export as namespace by;
 
 
