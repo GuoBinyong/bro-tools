@@ -37,9 +37,10 @@
   "author": "郭斌勇",
   "license": "ISC",
   "files": [
-    "src/*",
-    "prod/*",
-    "dist/*"
+    "src/[^.]*",
+    "types/[^.]*",
+    "prod/[^.]*",
+    "dist/[^.]*"
   ],
   "devDependencies": {
     "@babel/core": "^7.8.7",
@@ -81,5 +82,8 @@
     "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.11",
     "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "js-expand": "git+https://github.com/GuoBinyong/js-expand.git"
   }
 }
