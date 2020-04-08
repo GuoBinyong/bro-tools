@@ -1,8 +1,8 @@
 {
-  "name": "com-tools",
+  "name": "bro-tools",
   "version": "1.0.0",
-  "description": "jsexpand 提供了对 JS 中原生类型功能的扩展（如Object、Array、JSON、String、Number、Math、Date、Promise、URL、URLSearchParams 等等），也提供了一些工具函数；",
-  "main": "dist/com-tools.js",
+  "description": "bro-tools 提供了一些用于浏览环境中的工具函数",
+  "main": "dist/broTools.js",
   "module": "src/index.js",
   "types": "types/index.d.ts",
   "sideEffects": true,
@@ -14,25 +14,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GuoBinyong/com-tools"
+    "url": "https://github.com/GuoBinyong/bro-tools"
   },
   "keywords": [
-    "扩展",
-    "JS扩展",
-    "JS原生扩展",
-    "JavaScript扩展",
-    "JavaScript原生扩展",
-    "原生扩展",
-    "Object",
-    "Array",
-    "JSON",
-    "String",
-    "Number",
-    "Math",
-    "Date",
-    "Promise",
-    "URL",
-    "URLSearchParams"
+    "工具",
+    "浏览器工具",
+    "JavaScript工具",
+    "js工具",
+    "browser",
+    "tools",
+    "browser tools",
+    "JavaScript tools",
+    "js tools"
   ],
   "author": "郭斌勇",
   "license": "ISC",
@@ -84,6 +77,6 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "js-expand": "git+https://github.com/GuoBinyong/js-expand.git"
+    "es-expand": "file:../es-expand"
   }
 }

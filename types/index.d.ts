@@ -1,6 +1,6 @@
-import "js-expand"
+import "es-expand"
 
-export as namespace by;
+export as namespace broTools;
 
 
 
