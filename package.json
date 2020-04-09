@@ -78,6 +78,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "es-expand": "file:../es-expand"
+    "com-tools": "^1.0.1",
+    "es-expand": "^1.0.3"
   }
 }

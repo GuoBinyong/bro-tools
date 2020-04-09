@@ -1,6 +1,10 @@
 import "es-expand"
 
 
+import  "./Location"
+export * from "./URL"
+import  "./URLSearchParams"
+
 
 
 
@@ -35,7 +39,7 @@ export function elementIsMatchSelector(element,selector,parentNode) {
     return element.isSameNode(qsElem);
   });
 
-};
+}
 
 
 
@@ -129,7 +133,7 @@ export function elementIsMatchOption(element,option,parentNode) {
 
     return keyMatch;
   });
-};
+}
 
 
 
@@ -186,7 +190,7 @@ export function elementIsMatchSomeOptions(element,optionArr,parentNode) {
   return optionArr.some(function (option) {
     return elementIsMatchOption(element,option,parentNode);
   });
-};
+}
 
 
 
@@ -314,7 +318,7 @@ export function createManyTimesEventListener(handler,times,timeout,paramList) {
 
   return manyTimesEventListener ;
 
-};
+}
 
 
 // EventTarget：结束
