@@ -1,6 +1,5 @@
 
 
-
 declare global {
 
     interface URL {
@@ -15,7 +14,7 @@ declare global {
 
 
 
- 
+
 
 
 //依赖 URL 和 URLSearchParams 的解析：开始

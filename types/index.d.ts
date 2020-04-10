@@ -1,4 +1,6 @@
 import "es-expand"
+import "com-tools"
+
 
 import  "./Location"
 export * from "./URL"
