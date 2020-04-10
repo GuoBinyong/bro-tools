@@ -10,7 +10,6 @@ const path = require('path');
 const tools = require('./build/tools');
 
 
-
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
@@ -33,16 +32,16 @@ var projectConfig = {
                 * 方案1（这是默认的设置）：将 所有构建目标公共的 `projectConfig.bundleAnalyzerOptions.analyzerPort` 设置为 auto ；
                 * 方案2：分别给每一个 构建目标的 `bundleAnalyzerOptions.analyzerPort` 设置一个不同的值；
   */
-/*   multipleTargets: [
-    //使用默认的配置
-    null,
+  /*   multipleTargets: [
+      //使用默认的配置
+      null,
 
-    // node
-    {
-      target: "node",
-      filename: '[name].node.js'
-    }
-  ], */
+      // node
+      {
+        target: "node",
+        filename: '[name].node.js'
+      }
+    ], */
 
 
 
@@ -118,7 +117,20 @@ var projectConfig = {
     - **默认值：** `webpackNodeExternals()` ； 即排除所有 `node_modules` 中的模块； `webpackNodeExternals` 是 webpack-node-externals 包提供的功能，该包的信息详见 <https://github.com/liady/webpack-node-externals> ；
     - 详细信息： <https://webpack.docschina.org/configuration/externals/#externals>
   */
-  // externals: {},
+  externals: {
+    "es-expand": {
+      root: "esExpand",
+      commonjs2: "es-expand",
+      commonjs: "es-expand",
+      amd: "es-expand"
+    },
+    "com-tools": {
+      root: "comTools",
+      commonjs2: "com-tools",
+      commonjs: "com-tools",
+      amd: "com-tools"
+    }
+  },
 
   /*
   html模板文件；html-webpack-plugin
@@ -152,8 +164,6 @@ var projectConfig = {
   staticOutDirectory: 'static',
 
 
-
-
   // TypeScript配置
   tsconfig: {
 
@@ -172,7 +182,7 @@ var projectConfig = {
       - 默认值： target === "ES6" ? "ES6" : "commonjs"
       - 详细信息： <https://www.tslang.cn/docs/handbook/compiler-options.html>
      */
-     module:"ES6",
+    module: "ES6",
 
     /*
     指定是否生成相应的 .d.ts 文件。用作 tsconfig.json 的 declaration 选项
@@ -181,9 +191,6 @@ var projectConfig = {
       - 详细信息： <https://www.tslang.cn/docs/handbook/compiler-options.html>
     */
     declaration: true,
-
-
-
 
 
     /*
@@ -197,8 +204,6 @@ var projectConfig = {
     loader: "ts-loader",
 
   },
-
-
 
 
   /*
@@ -333,9 +338,6 @@ source map 的开关；用于控制是否生成 source map；
   }
 
 }
-
-
-
 
 
 module.exports = tools.projecConfigMultipleTargetsSeparation(projectConfig);
