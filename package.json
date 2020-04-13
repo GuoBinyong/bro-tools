@@ -1,6 +1,6 @@
 {
   "name": "bro-tools",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "bro-tools 提供了一些用于浏览环境中的工具函数",
   "main": "dist/bro-tools.umd.js",
   "module": "src/index",
