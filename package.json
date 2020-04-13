@@ -1,9 +1,9 @@
 {
   "name": "bro-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "bro-tools 提供了一些用于浏览环境中的工具函数",
-  "main": "dist/broTools.js",
-  "module": "src/index.js",
+  "main": "dist/bro-tools.umd.js",
+  "module": "src/index",
   "types": "types/index.d.ts",
   "sideEffects": true,
   "scripts": {
@@ -37,6 +37,15 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-flow": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
@@ -78,7 +87,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "com-tools": "^1.0.4",
-    "es-expand": "^1.0.3"
+    "com-tools": "^1.0.5",
+    "es-expand": "^1.0.5"
   }
 }
