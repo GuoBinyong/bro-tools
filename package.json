@@ -1,6 +1,6 @@
 {
   "name": "bro-tools",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "bro-tools 提供了一些用于浏览环境中的工具函数",
   "main": "dist/bro-tools.umd.js",
   "module": "src/index",
@@ -87,7 +87,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "com-tools": "^1.0.5",
+    "com-tools": "^1.0.7",
     "es-expand": "^1.0.5"
   }
 }

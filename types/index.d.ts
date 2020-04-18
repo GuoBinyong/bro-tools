@@ -6,7 +6,6 @@ import  "./Location"
 export * from "./URL"
 import  "./URLSearchParams"
 
-export as namespace broTools;
 
 
 
