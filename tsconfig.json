@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "ESNEXT",
-    "module": "commonjs",
+    "target": "es5",
+    "module": "ESNext",
     "lib": [
       "DOM",
       "DOM.Iterable",
@@ -9,7 +9,8 @@
       "ScriptHost"
     ],
     "strict": true,
-    "declaration":true
+    "declaration":true,
+    "esModuleInterop": true
   },
   "exclude":[
     "dist",
