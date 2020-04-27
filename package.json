@@ -1,6 +1,6 @@
 {
   "name": "bro-tools",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "bro-tools 提供了一些用于浏览环境中的工具函数",
   "main": "dist/bro-tools.cjs.js",
   "module": "dist/bro-tools.esm.js",
@@ -52,7 +52,7 @@
     "rollup-plugin-babel": "^4.2.0"
   },
   "dependencies": {
-    "com-tools": "^1.0.8",
-    "es-expand": "^1.0.9"
+    "com-tools": "^1.0.9",
+    "es-expand": "^1.0.11"
   }
 }

@@ -20,6 +20,8 @@ if (globalThis.URLSearchParams) {
      * 把 URLSearchParams 转换对象形式；
      */
     toParams: {
+      configurable:true,
+      writable:true,
       enumerable: false,
       value: function () {
         let params = {};
@@ -37,6 +39,8 @@ if (globalThis.URLSearchParams) {
      * 清除所有的 key
      */
     clear: {
+      configurable:true,
+      writable:true,
       enumerable: false,
       value: function () {
         safelyIterate(this.keys(), (key) => {
@@ -54,6 +58,8 @@ if (globalThis.URLSearchParams) {
      * 注意：不要质疑下面的 switch 代码的逻辑，这是正确且高效的，这样写也是为了减少代码量
      */
     appendParams: {
+      configurable:true,
+      writable:true,
       enumerable: false,
       value: function (params) {
 
@@ -91,6 +97,8 @@ if (globalThis.URLSearchParams) {
      * 注意：不要质疑下面的 switch 代码的逻辑，这是正确且高效的，这样写也是为了减少代码量
      */
     setParams: {
+      configurable:true,
+      writable:true,
       enumerable: false,
       value: function (params) {
 
@@ -126,6 +134,8 @@ if (globalThis.URLSearchParams) {
      * @param params : Object | string | URLSearchParams 该 对象自身 或 查询字符串 的所有成员都会被插入进来
      */
     resetParams: {
+      configurable:true,
+      writable:true,
       enumerable: false,
       value: function (params) {
         this.clear();

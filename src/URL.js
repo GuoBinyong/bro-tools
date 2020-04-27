@@ -13,6 +13,7 @@ if (globalThis.URL) {
      * set: newValue : Object | string | URLSearchParams    把当前URL的查询参数重置成  params
      */
     params: {
+      configurable:true,
       enumerable: false,
       get: function () {
         return this.searchParams.toParams();
