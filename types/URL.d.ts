@@ -8,7 +8,7 @@ declare global {
          * get:把 URLSearchParams 转换对象形式；
          * set: newValue : Object | string | URLSearchParams    把当前URL的查询参数重置成  params
          */
-            params:object | string | URLSearchParams;
+            params:any;
      }
 }
 
@@ -25,7 +25,7 @@ protocol?: string;    //包含URL对应协议的一个DOMString，最后有一�
 host?: string;    //包含了域名的一个DOMString，可能在该串最后带有一个":"并跟上URL的端口号
 pathname?: string;    //包含URL中路径部分的一个DOMString，开头有一个“/"。
 hash?: string ;   //包含块标识符的DOMString，开头有一个“#”。
-params?: string | object;    //url的参数对象 或者 字符串
+params?: any;    //url的参数对象 或者 字符串
 }
 
 /**
