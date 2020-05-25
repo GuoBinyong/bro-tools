@@ -4,22 +4,6 @@
   (global = global || self, factory(global.broTools = {}));
 }(this, (function (exports) { 'use strict';
 
-  function _typeof(obj) {
-    "@babel/helpers - typeof";
-
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function (obj) {
-        return typeof obj;
-      };
-    } else {
-      _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
-    }
-
-    return _typeof(obj);
-  }
-
   function _objectWithoutPropertiesLoose(source, excluded) {
     if (source == null) return {};
     var target = {};
@@ -35,11 +19,11 @@
     return target;
   }
 
+  var objectWithoutPropertiesLoose = _objectWithoutPropertiesLoose;
+
   function _objectWithoutProperties(source, excluded) {
     if (source == null) return {};
-
-    var target = _objectWithoutPropertiesLoose(source, excluded);
-
+    var target = objectWithoutPropertiesLoose(source, excluded);
     var key, i;
 
     if (Object.getOwnPropertySymbols) {
@@ -56,24 +40,40 @@
     return target;
   }
 
-  function _typeof$1(obj) {
+  var objectWithoutProperties = _objectWithoutProperties;
+
+  function createCommonjsModule(fn, module) {
+  	return module = { exports: {} }, fn(module, module.exports), module.exports;
+  }
+
+  var _typeof_1 = createCommonjsModule(function (module) {
+  function _typeof(obj) {
     "@babel/helpers - typeof";
 
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof$1 = function (obj) {
+      module.exports = _typeof = function _typeof(obj) {
         return typeof obj;
       };
     } else {
-      _typeof$1 = function (obj) {
+      module.exports = _typeof = function _typeof(obj) {
         return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
       };
     }
 
-    return _typeof$1(obj);
+    return _typeof(obj);
   }
 
-  function _toConsumableArray(arr) {
-    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
+  module.exports = _typeof;
+  });
+
+  function _arrayLikeToArray(arr, len) {
+    if (len == null || len > arr.length) len = arr.length;
+
+    for (var i = 0, arr2 = new Array(len); i < len; i++) {
+      arr2[i] = arr[i];
+    }
+
+    return arr2;
   }
 
   function _arrayWithoutHoles(arr) {
@@ -89,75 +89,16 @@
     if (typeof o === "string") return _arrayLikeToArray(o, minLen);
     var n = Object.prototype.toString.call(o).slice(8, -1);
     if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(n);
+    if (n === "Map" || n === "Set") return Array.from(o);
     if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-  }
-
-  function _arrayLikeToArray(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-
-    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-    return arr2;
   }
 
   function _nonIterableSpread() {
     throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
-  function _createForOfIteratorHelper(o) {
-    if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
-      if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) {
-        var i = 0;
-
-        var F = function () {};
-
-        return {
-          s: F,
-          n: function () {
-            if (i >= o.length) return {
-              done: true
-            };
-            return {
-              done: false,
-              value: o[i++]
-            };
-          },
-          e: function (e) {
-            throw e;
-          },
-          f: F
-        };
-      }
-
-      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }
-
-    var it,
-        normalCompletion = true,
-        didErr = false,
-        err;
-    return {
-      s: function () {
-        it = o[Symbol.iterator]();
-      },
-      n: function () {
-        var step = it.next();
-        normalCompletion = step.done;
-        return step;
-      },
-      e: function (e) {
-        didErr = true;
-        err = e;
-      },
-      f: function () {
-        try {
-          if (!normalCompletion && it.return != null) it.return();
-        } finally {
-          if (didErr) throw err;
-        }
-      }
-    };
+  function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
   }
 
   /*
@@ -481,7 +422,7 @@
      * @param end ? : number   可选，默认值：start ； 被删除的元素的结束索引；
      * @returns Array   被删除的元素的数组
      */
-    delete: {
+    "delete": {
       configurable: true,
       writable: true,
       enumerable: false,
@@ -900,6 +841,22 @@
     return Number.isInteger(target.length) && length >= 0;
   };
 
+  function _typeof(obj) {
+    "@babel/helpers - typeof";
+
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+      _typeof = function _typeof(obj) {
+        return typeof obj;
+      };
+    } else {
+      _typeof = function _typeof(obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+      };
+    }
+
+    return _typeof(obj);
+  }
+
   //对 JSON 扩展的属性和方法都写在 extendJSON 里面
   var extendJSON = {
     extended: true,
@@ -944,7 +901,7 @@
       var newTarget = Object.keys(target).reduce(function (total, key) {
         var prop = target[key];
 
-        if (_typeof$1(prop) == "object") {
+        if (_typeof(prop) == "object") {
           prop = _this.depthStringify(prop, replacer, space);
         }
 
@@ -965,7 +922,7 @@
 
       var result = JSON.correctParse(text, reviver);
 
-      if (_typeof$1(result) == "object") {
+      if (_typeof(result) == "object") {
         Object.keys(result).forEach(function (key) {
           var prop = result[key];
           prop = _this2.depthParse(prop, reviver);
@@ -1551,6 +1508,50 @@
 
   };*/
 
+  function _arrayWithHoles(arr) {
+    if (Array.isArray(arr)) return arr;
+  }
+
+  function _iterableToArrayLimit(arr, i) {
+    if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"] != null) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  function _nonIterableRest() {
+    throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+
+  function _slicedToArray(arr, i) {
+    return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+  }
+
+  function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray$1(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+  function _unsupportedIterableToArray$1(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$1(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o, minLen); }
+
+  function _arrayLikeToArray$1(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
   /*
    使用属性描述来定义属性的原因：
    - 为了不让 for...in 等类似的操作遍历这些定义在原型上的方法或属性，需要将属性设置为不可枚举的；
@@ -1616,7 +1617,7 @@
       enumerable: false,
       get: function get() {
         var noFlat = Object.values(this).some(function (propValue) {
-          var propType = _typeof$1(propValue);
+          var propType = _typeof(propValue);
 
           return propValue && (propType === "object" || propType === "function");
         });
@@ -1841,7 +1842,7 @@
             var key = _step.value;
             var value = this[key];
 
-            if (_typeof$1(value) == "object") {
+            if (_typeof(value) == "object") {
               stopInfo = value.depthLoopOwnProperty(callback, depth - 1, all, thisValue, initDepth + 1);
 
               if (stopInfo) {
@@ -1901,7 +1902,7 @@
         for (var key in this) {
           var value = this[key];
 
-          if (_typeof$1(value) == "object") {
+          if (_typeof(value) == "object") {
             stopInfo = value.depthLoopPropertyWithPrototype(callback, depth - 1, thisValue, initDepth + 1);
 
             if (stopInfo) {
@@ -2221,7 +2222,7 @@
       }
     } else {
       if (nullNotEqualUndefined) {
-        var equalTest = function equalTest(a, b) {
+        equalTest = function equalTest(a, b) {
           return a == null ? a === b : a == b;
         };
       } else {
@@ -2237,9 +2238,9 @@
       return equalTest(a, b);
     }
 
-    var aType = _typeof$1(a);
+    var aType = _typeof(a);
 
-    var bType = _typeof$1(b);
+    var bType = _typeof(b);
 
     if (aType != bType) {
       //测试 基础类型 与 其包装类型 的相等性
@@ -2256,9 +2257,30 @@
       }
 
       if (a instanceof Map) {
-        if (b instanceof Map && a.size === b.size) ; else {
-          return false;
+        if (b instanceof Map && a.size === b.size) {
+          var _iterator2 = _createForOfIteratorHelper(a),
+              _step2;
+
+          try {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+              var _step2$value = _slicedToArray(_step2.value, 2),
+                  key = _step2$value[0],
+                  aVal = _step2$value[1];
+
+              if (!(b.has(key) && Object.isDepthEqual(aVal, b.get(key), nullNotEqualUndefined, strict))) {
+                return false;
+              }
+            }
+          } catch (err) {
+            _iterator2.e(err);
+          } finally {
+            _iterator2.f();
+          }
+
+          return true;
         }
+
+        return false;
       }
 
       var aIsArr = Array.isArray(a);
@@ -2267,18 +2289,18 @@
       if (!aIsArr && Object.isIterable(a)) {
         var aArr = [];
 
-        var _iterator2 = _createForOfIteratorHelper(a),
-            _step2;
+        var _iterator3 = _createForOfIteratorHelper(a),
+            _step3;
 
         try {
-          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-            var value = _step2.value;
+          for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+            var value = _step3.value;
             aArr.push(value);
           }
         } catch (err) {
-          _iterator2.e(err);
+          _iterator3.e(err);
         } finally {
-          _iterator2.f();
+          _iterator3.f();
         }
 
         a = aArr;
@@ -2288,18 +2310,18 @@
       if (!bIsArr && Object.isIterable(b)) {
         var bArr = [];
 
-        var _iterator3 = _createForOfIteratorHelper(b),
-            _step3;
+        var _iterator4 = _createForOfIteratorHelper(b),
+            _step4;
 
         try {
-          for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-            var _value = _step3.value;
+          for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+            var _value = _step4.value;
             bArr.push(_value);
           }
         } catch (err) {
-          _iterator3.e(err);
+          _iterator4.e(err);
         } finally {
-          _iterator3.f();
+          _iterator4.f();
         }
 
         b = bArr;
@@ -2310,7 +2332,7 @@
         return false;
       }
 
-      if (isArr) {
+      if (aIsArr) {
         if (a.length != b.length) {
           return false;
         }
@@ -2324,7 +2346,6 @@
       var aEntrs = Object.entries(a);
       var bEntrs = Object.entries(b);
       aEntrs = aEntrs.filter(function (entr) {
-        !equalTest(entr[1], undefined);
         return !equalTest(entr[1], undefined);
       });
       bEntrs = bEntrs.filter(function (entr) {
@@ -2346,92 +2367,20 @@
     return equalTest(a, b);
   };
 
-  function _typeof$2(obj) {
+  function _typeof$1(obj) {
     "@babel/helpers - typeof";
 
     if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof$2 = function (obj) {
+      _typeof$1 = function _typeof(obj) {
         return typeof obj;
       };
     } else {
-      _typeof$2 = function (obj) {
+      _typeof$1 = function _typeof(obj) {
         return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
       };
     }
 
-    return _typeof$2(obj);
-  }
-
-  function _unsupportedIterableToArray$1(o, minLen) {
-    if (!o) return;
-    if (typeof o === "string") return _arrayLikeToArray$1(o, minLen);
-    var n = Object.prototype.toString.call(o).slice(8, -1);
-    if (n === "Object" && o.constructor) n = o.constructor.name;
-    if (n === "Map" || n === "Set") return Array.from(o);
-    if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o, minLen);
-  }
-
-  function _arrayLikeToArray$1(arr, len) {
-    if (len == null || len > arr.length) len = arr.length;
-
-    for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-
-    return arr2;
-  }
-
-  function _createForOfIteratorHelper$1(o) {
-    if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) {
-      if (Array.isArray(o) || (o = _unsupportedIterableToArray$1(o))) {
-        var i = 0;
-
-        var F = function () {};
-
-        return {
-          s: F,
-          n: function () {
-            if (i >= o.length) return {
-              done: true
-            };
-            return {
-              done: false,
-              value: o[i++]
-            };
-          },
-          e: function (e) {
-            throw e;
-          },
-          f: F
-        };
-      }
-
-      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }
-
-    var it,
-        normalCompletion = true,
-        didErr = false,
-        err;
-    return {
-      s: function () {
-        it = o[Symbol.iterator]();
-      },
-      n: function () {
-        var step = it.next();
-        normalCompletion = step.done;
-        return step;
-      },
-      e: function (e) {
-        didErr = true;
-        err = e;
-      },
-      f: function () {
-        try {
-          if (!normalCompletion && it.return != null) it.return();
-        } finally {
-          if (didErr) throw err;
-        }
-      }
-    };
+    return _typeof$1(obj);
   }
   // 普通解析与字符串化：开始
   //不依赖 URL 和 URLSearchParams 的解析：开始
@@ -2449,7 +2398,7 @@
 
 
   function _paramsPropJSONStringify(value, key, params) {
-    if (_typeof$2(value) == "object") {
+    if (_typeof$1(value) == "object") {
       value = JSON.stringify(value);
     }
 
@@ -2607,6 +2556,12 @@
     }
   };
   Object.defineProperties(String.prototype, stringPropertyDescriptors); // String扩展：结束
+
+  function _createForOfIteratorHelper$1(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray$2(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+  function _unsupportedIterableToArray$2(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$2(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$2(o, minLen); }
+
+  function _arrayLikeToArray$2(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
   /**
    * multipleLoop(option)=> stopLoop()
@@ -2855,7 +2810,7 @@
       },
       set: function set(newValue) {
         this.search = queryStringify(newValue, function (value, key, params) {
-          if (_typeof(value) == "object") {
+          if (_typeof_1(value) == "object") {
             value = JSON.stringify(value);
           }
 
@@ -2911,7 +2866,7 @@
 
 
   function stringifyUrlByURLClass(urlObj, replace) {
-    if (_typeof(urlObj) != "object") {
+    if (_typeof_1(urlObj) != "object") {
       return urlObj;
     }
 
@@ -2957,9 +2912,9 @@
     if (params) {
       var searchParams = urlInst.searchParams;
 
-      var paramsType = _typeof(params);
+      var paramsType = _typeof_1(params);
 
-      if (_typeof(params) != "object") {
+      if (_typeof_1(params) != "object") {
         if (replace) {
           urlInst.search = params;
         } else {
@@ -3077,7 +3032,7 @@
           var _this = this;
 
           safelyIterate(this.keys(), function (key) {
-            _this.delete(key);
+            _this["delete"](key);
           });
         }
       },
@@ -3520,7 +3475,7 @@
    */
 
   function loadScript(scriptProps) {
-    if (_typeof(scriptProps) != "object") {
+    if (_typeof_1(scriptProps) != "object") {
       scriptProps = {
         src: scriptProps
       };
@@ -3528,7 +3483,7 @@
 
     var _scriptProps = scriptProps,
         src = _scriptProps.src,
-        otherPross = _objectWithoutProperties(_scriptProps, ["src"]);
+        otherPross = objectWithoutProperties(_scriptProps, ["src"]);
 
     var scriptEle = document.createElement("script");
     Object.assign(scriptEle, otherPross);
