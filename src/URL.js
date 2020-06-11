@@ -103,8 +103,6 @@ export function stringifyUrlByURLClass(urlObj, replace){
   if (params){
     let searchParams = urlInst.searchParams
 
-    let paramsType = typeof params;
-
     if (typeof params != "object") {
       if (replace) {
         urlInst.search = params;

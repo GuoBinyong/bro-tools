@@ -1,5 +1,5 @@
-import {parseQueryString,queryStringify} from "com-tools"
-
+import {parseQueryString,queryStringify} from "url-tls"
+import {correctParse} from "json-tls"
 
 
 let propertyDescriptors = {
@@ -12,7 +12,7 @@ let propertyDescriptors = {
     configurable:true,
     enumerable: false,
     get: function () {
-      return new window.URLSearchParams(this.search);
+      return new globalThis.URLSearchParams(this.search);
     },
 
     set:function (newValue) {
@@ -30,13 +30,13 @@ let propertyDescriptors = {
     enumerable: false,
     get: function () {
       return parseQueryString(this.search,function (value) {
-        return JSON.correctParse(value);
+        return correctParse(value);
       });
     },
 
     set:function (newValue) {
-      this.search = queryStringify(newValue,function (value,key,params) {
-        if (typeof value == "object"){
+      this.search = queryStringify(newValue,function (value) {
+        if (typeof value === "object"){
           value = JSON.stringify(value);
         }
         return value;

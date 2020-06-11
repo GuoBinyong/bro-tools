@@ -1,6 +1,3 @@
-import "es-expand"
-
-
 import  "./Location"
 export * from "./URL"
 import  "./URLSearchParams"

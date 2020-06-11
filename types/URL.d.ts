@@ -1,4 +1,4 @@
-import "com-tools"
+import type {UrlUtils} from "url-tls"
 
 declare global {
 

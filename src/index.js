@@ -1,6 +1,3 @@
-import "es-expand"
-
-
 import  "./Location"
 export * from "./URL"
 import  "./URLSearchParams"
@@ -274,7 +271,7 @@ export function createManyTimesEventListener(handler,times,timeout,paramList) {
 
 
     //找出事件的 type、target、currentTarget 都相同的事件对象；
-    var sameEvent = eventList.find(function(eventItem, index){
+    var sameEvent = eventList.find(function(eventItem){
       return eventItem.target == event.target && eventItem.listenTarget == event.currentTarget ;
     });
 
@@ -489,9 +486,9 @@ export function prohibitWindowHeightChangeWhenInput(cancel) {
     };
 
     //设置html和body的高度为窗口变化前的空度
-    var compStyleOfHtml = window.getComputedStyle(htmlDom);
+    var compStyleOfHtml = globalThis.getComputedStyle(htmlDom);
     htmlStyle.height = compStyleOfHtml.height;
-    var compStyleOfBody = window.getComputedStyle(bodyDom);
+    var compStyleOfBody = globalThis.getComputedStyle(bodyDom);
     bodyStyle.height = compStyleOfBody.height;
   };
 
