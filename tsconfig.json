@@ -1,19 +1,24 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNEXT",
     "module": "ESNext",
-    "moduleResolution": "node",
     "lib": [
       "DOM",
       "DOM.Iterable",
       "ESNext",
       "ScriptHost"
     ],
+    "declaration": true,
+    "rootDirs":[
+      "src",
+      "types"
+    ],
+    "downlevelIteration": true,
     "strict": true,
-    "declaration":true,
+    "moduleResolution": "node",
     "esModuleInterop": true
   },
-  "exclude":[
+  "exclude": [
     "dist",
     "dev"
   ]
