@@ -65,6 +65,7 @@
   "dependencies": {
     "@babel/runtime": "^7.9.6",
     "com-tools": "^2.0.0",
+    "es-expand": "^2.2.0",
     "json-tls": "^1.1.0",
     "url-tls": "^1.0.1"
   }
