@@ -114,10 +114,13 @@ export function elementIsMatchSelector(element: Element, selector: string, paren
     }
 
     var elemList =  parent.querySelectorAll(selector);
-    var elemArray = Array.from(elemList);
-    return elemArray.some(function(qsElem){
-        return element.isSameNode(qsElem);
-    });
+    for (const qsElem of elemList){
+        if (element.isSameNode(qsElem)){
+            return true
+        }
+    }
+
+    return false;
 
 }
 
