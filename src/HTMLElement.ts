@@ -34,12 +34,12 @@ export function focusChildElementWhenEventOnTarget(targetElements:ElementMatcher
  *
  * 在 eventName事件触发在符合条件的目标元素上时，将焦点聚焦到该元素的后代元素中的 第一个input 或 textarea 元素 或 目标元素本身（当目标元素是input 或 textarea 元素时）
  * @param targetElements : ElementMatchers    目标元素是否符合条件的测试选项列表，只要符合其中任一测试选项，就算通过
- * @param eventName ? : string     可选；默认值："click"； 监听事件的名字
- * @param excludeSelf ? :  boolean  可选；默认值：false ; 表示当点击的目标元素是 input 或 textarea 元素时，不做设置焦点的动作；即 排除目标元素是 input 或 textarea 的情况
+ * @param eventName ? : string | null      可选；默认值："click"； 监听事件的名字
+ * @param excludeSelf ? :  boolean | null   可选；默认值：false ; 表示当点击的目标元素是 input 或 textarea 元素时，不做设置焦点的动作；即 排除目标元素是 input 或 textarea 的情况
  *
  * @returns CancelHandler  返回一个函数，调用该函数，可取消 本次 focusInputTextareaWhenEventOnTarget 的设置
  */
-export function focusInputTextareaWhenEventOnTarget(targetElements:ElementMatchers,eventName?: string|null, excludeSelf?: boolean):CancelHandler {
+export function focusInputTextareaWhenEventOnTarget(targetElements:ElementMatchers,eventName?: string|null, excludeSelf?: boolean|null ):CancelHandler {
     const eveName = eventName ? eventName : "click";
     const selectorsOfFocusedChild = "input,textarea";
     const excludeTargets = excludeSelf ? [{tag:"input"},{tag:"textarea"}] : null;

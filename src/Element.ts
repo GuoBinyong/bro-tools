@@ -23,16 +23,16 @@ export type Selectors = string;
  * 注意：
  * option的各种配置项是且的关系，即：option中设置的所有配置项都匹配才算通过
  * option 中可配置如下属性：
- * tag ? : string   可选； 元素的标签名字
- * id ? : string  可选； 元素的id
- * class ? : string | Array  可选；元素的class ；如果是 字符串，则会与 元素的 className 进行比较，只有完全相等才算通过；如果是 数组，则元素的类包含数组中指定的所有类，才算通过
- * selector : string    可选；css选择器
+ * tag ? : string | null   可选； 元素的标签名字
+ * id ? : string | null   可选； 元素的id
+ * class ? : string | Array | null   可选；元素的class ；如果是 字符串，则会与 元素的 className 进行比较，只有完全相等才算通过；如果是 数组，则元素的类包含数组中指定的所有类，才算通过
+ * selector : string | null     可选；css选择器
  */
 export type ElementMatchObject = {
-    tag?: string,       // 可选； 元素的标签名字
-    id?: string,        // 可选； 元素的id
-    class?: string | string[],      // 可选；元素的class ；如果是 字符串，则会与 元素的 className 进行比较，只有完全相等才算通过；如果是 数组，则元素的类包含数组中指定的所有类，才算通过
-    selector?: Selectors       // 可选；css选择器；包含一个或多个匹配的选择器。这个字符串必须是一个合法的 CSS selector 如果不是，会抛出一个 SyntaxError 错误；可以通过使用逗号分隔多个选择器来指定它们。
+    tag?: string | null ,       // 可选； 元素的标签名字
+    id?: string | null ,        // 可选； 元素的id
+    class?: string | string[] | null ,      // 可选；元素的class ；如果是 字符串，则会与 元素的 className 进行比较，只有完全相等才算通过；如果是 数组，则元素的类包含数组中指定的所有类，才算通过
+    selector?: Selectors | null        // 可选；css选择器；包含一个或多个匹配的选择器。这个字符串必须是一个合法的 CSS selector 如果不是，会抛出一个 SyntaxError 错误；可以通过使用逗号分隔多个选择器来指定它们。
 };
 
 
@@ -57,7 +57,7 @@ declare global {
          * 或者可以理解为：
          * 当前元素 在 parentNode 节点或其子节点中 是否匹配指定的选择器 selector
          * @param selector : string   css 选择器
-         * @param parentNode ? : Element   可选；默认值：document ; 限定匹配的范围;
+         * @param parentNode ? : Element | null    可选；默认值：document ; 限定匹配的范围;
          * @returns boolean
          *
          */
@@ -70,7 +70,7 @@ declare global {
          * 或者可以理解为：
          * 当前元素 在 parentNode 节点或其子节点中 是否匹配指定的 匹配选项option
          * @param option : ElementMatchOption   匹配选项；注意：各种选项配置项是且的关系，即：选项对象中设置的所有匹配项都匹配才算通过
-         * @param parentNode ? : Element   可选；默认值：document ; 限定匹配的范围;
+         * @param parentNode ? : Element | null    可选；默认值：document ; 限定匹配的范围;
          * @returns boolean
          */
         isMatchOption(option: ElementMatchOption, parentNode?: Element|null): boolean;
@@ -80,7 +80,7 @@ declare global {
          * isMatchSomeOptions(optionArr,parentNode)
          * 在 parentNode 节点或其子节点中，  optionArr 数组中 是否存在 元素 element  匹配的 选项
          * @param optionArr : ElementMatchOption[]   匹配选项数组；只要数组中存在匹配的选项对象，就算通过
-         * @param parentNode ? : Element   可选；默认值：document ; 限定匹配的范围;
+         * @param parentNode ? : Element | null    可选；默认值：document ; 限定匹配的范围;
          * @returns boolean
          *
          */
@@ -104,7 +104,7 @@ declare global {
  * 测试目标 element 在 parentNode 节点或其子节点中 是否匹配指定的选择器 selector
  * @param element : Element   被测试的元素
  * @param selector : string   css 选择器
- * @param parentNode ? : Element   可选；默认值：document ; 限定匹配的范围;
+ * @param parentNode ? : Element | null    可选；默认值：document ; 限定匹配的范围;
  * @returns boolean
  */
 export function elementIsMatchSelector(element: Element, selector: string, parentNode?: Element|null): boolean {
@@ -130,7 +130,7 @@ export function elementIsMatchSelector(element: Element, selector: string, paren
  * 或者可以理解为：
  * 当前元素 在 parentNode 节点或其子节点中 是否匹配指定的选择器 selector
  * @param selector : string   css 选择器
- * @param parentNode ? : Element   可选；默认值：document ; 限定匹配的范围;
+ * @param parentNode ? : Element | null    可选；默认值：document ; 限定匹配的范围;
  * @returns boolean
  */
 Element.prototype.isMatchSelector = function isMatchSelector(selector: string, parentNode?: Element|null): boolean {
@@ -149,7 +149,7 @@ Element.prototype.isMatchSelector = function isMatchSelector(selector: string, p
  * 测试目标 element 在 parentNode 节点或其子节点中 是否匹配指定的 匹配选项option
  * @param element : Element   被测试的元素
  * @param option : ElementMatchOption   匹配选项；注意：各种选项配置项是且的关系，即：选项对象中设置的所有匹配项都匹配才算通过
- * @param parentNode ? : Element   可选；默认值：document ; 限定匹配的范围;
+ * @param parentNode ? : Element | null    可选；默认值：document ; 限定匹配的范围;
  * @returns boolean
  *
  */
@@ -191,7 +191,9 @@ export function elementIsMatchOption(element: Element, option: ElementMatchOptio
 
 
             case "selector":{
-                keyMatch = element.isMatchSelector(value,parent as Element);
+                if  (value){
+                    keyMatch = element.isMatchSelector(value,parent as Element);
+                }
                 break
             }
 
@@ -213,7 +215,7 @@ export function elementIsMatchOption(element: Element, option: ElementMatchOptio
  * 或者可以理解为：
  * 当前元素 在 parentNode 节点或其子节点中 是否匹配指定的 匹配选项option
  * @param option : ElementMatchOption   匹配选项；注意：各种选项配置项是且的关系，即：选项对象中设置的所有匹配项都匹配才算通过
- * @param parentNode ? : Element   可选；默认值：document ; 限定匹配的范围;
+ * @param parentNode ? : Element | null    可选；默认值：document ; 限定匹配的范围;
  * @returns boolean
  *
  */
@@ -250,7 +252,7 @@ export function elementIsMatchSomeOptions(element: Element, optionArr: ElementMa
  * isMatchSomeOptions(optionArr,parentNode)
  * 在 parentNode 节点或其子节点中，  optionArr 数组中 是否存在 元素 element  匹配的 选项
  * @param optionArr : ElementMatchOption[]   匹配选项数组；只要数组中存在匹配的选项对象，就算通过
- * @param parentNode ? : Element   可选；默认值：document ; 限定匹配的范围;
+ * @param parentNode ? : Element | null    可选；默认值：document ; 限定匹配的范围;
  * @returns boolean
  *
  */
@@ -378,7 +380,6 @@ export function operateChildElementWhenEventOnTarget(targetElements:ElementMatch
         if (testMatchForElement(target as Element,targetElements) && !(excludeTargets && testMatchForElement(target as Element,excludeTargets))) {
 
             let childList:NodeList | Element[] = (<Element>target).querySelectorAll(childSelectors);
-            // const childList = childNodeList.length === 0 && elementIsMatchSelector(target,childSelectors,target.parentNode as Element) ? [target] : Array.from(childNodeList);
             if (childList.length === 0){
                 if  (elementIsMatchSelector(target,childSelectors,target.parentNode as Element)){
                     childList = [target];

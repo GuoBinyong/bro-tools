@@ -20,5 +20,5 @@ export function loadScript(scriptProps:string | object):HTMLScriptElement;
  * 禁止当弹出键盘时 winodw 窗口改变高度
  * @param cancel ?: boolean    可选；默认值：false；表示是否要 取消 之前禁止
  */
-export function prohibitWindowHeightChangeWhenInput(cancel?:boolean):void;
+export function prohibitWindowHeightChangeWhenInput(cancel?:boolean|null ):void;
 
