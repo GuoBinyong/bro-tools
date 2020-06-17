@@ -1,6 +1,6 @@
 {
   "name": "bro-tools",
-  "version": "1.0.11",
+  "version": "1.1.0",
   "description": "bro-tools 提供了一些用于浏览环境中的工具函数",
   "main": "dist/bro-tools.cjs.js",
   "module": "dist/bro-tools.es.js",
