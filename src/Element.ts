@@ -115,7 +115,7 @@ export function elementIsMatchSelector(element: Element, selector: string, paren
 
     var elemList =  parent.querySelectorAll(selector);
     for (const qsElem of elemList){
-        if (element.isSameNode(qsElem)){
+        if (element === qsElem){
             return true
         }
     }
